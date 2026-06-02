@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {
@@ -9,7 +10,7 @@ class DioClient {
     _dio = Dio(
       BaseOptions(
         // Replace with your base URL later or load via environment variables
-        baseUrl: 'https://api.example.com',
+        baseUrl: dotenv.env['API_BASE_URL'] ?? 'https://api.example.com',
         connectTimeout: const Duration(seconds: 15),
         receiveTimeout: const Duration(seconds: 13),
         headers: {

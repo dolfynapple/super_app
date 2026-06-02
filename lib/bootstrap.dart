@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:portfolio_super_app/app/services/service_locator.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -25,6 +26,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
+
+  // load env
+  await dotenv.load();
 
   Bloc.observer = const AppBlocObserver();
 
