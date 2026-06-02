@@ -32,7 +32,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   Bloc.observer = const AppBlocObserver();
 
-  // init DI
+  WidgetsFlutterBinding.ensureInitialized();
   await initServiceLocator();
 
   // Add cross-flavor configuration here
