@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:portfolio_super_app/app/services/dio_client.dart';
+import 'package:portfolio_super_app/app/services/network/dio_client.dart';
 
 /// Global alias to cleanly pull dependencies anywhere in the app:
 /// e.g., `sl<DioClient>()`
