@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio_super_app/counter/counter.dart'; // Using the default template page as a placeholder
+import 'package:portfolio_super_app/features/counter/counter.dart'; // Using the default template page as a placeholder
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'root',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:portfolio_super_app/app/router/app_router.dart';
+import 'package:portfolio_super_app/core/router/app_router.dart';
 import 'package:portfolio_super_app/l10n/l10n.dart';
 
 class App extends StatelessWidget {
