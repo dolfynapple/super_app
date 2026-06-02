@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:portfolio_super_app/app/services/network/dio_client.dart';
 import 'package:portfolio_super_app/app/database/hive_service.dart';
+import 'package:portfolio_super_app/app/services/network/dio_client.dart';
 
 /// Global alias to cleanly pull dependencies anywhere in the app:
 /// e.g., `sl<DioClient>()`
@@ -10,17 +10,15 @@ final GetIt sl = GetIt.instance;
 Future<void> initServiceLocator() async {
   logDI('Initializing Service Locator...');
 
+  // initializing Hive.
   final hiveService = HiveService();
   await hiveService.init();
 
+  // == registering services in the locator ==
   sl
     ..registerSingleton<HiveService>(hiveService)
     ..registerLazySingleton<DioClient>(DioClient.new);
-
-  // ==========================================================================
-  // 2. Global Services / Repositories
-  // ==========================================================================
-  // We will register your WebSocket, AI Client, and Encryption layers here.
+  // == end of registrations ==
 
   logDI('Service Locator Successfully Ready!');
 }
