@@ -1,26 +1,23 @@
-// lib/app/network/dio_client.dart
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:portfolio_super_app/core/network/api_constants.dart';
+import 'package:portfolio_super_app/core/network/interceptors/auth_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {
-  DioClient() {
-    _dio = Dio(
-      BaseOptions(
-        // Replace with your base URL later or load via environment variables
-        baseUrl: dotenv.env['API_BASE_URL'] ?? 'https://api.example.com',
-        connectTimeout: const Duration(seconds: 15),
-        receiveTimeout: const Duration(seconds: 13),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      ),
-    );
-
-    // Attach interceptors (Loggers, Auth inject tokens, etc.)
+  DioClient({required this.tokenProvider})
+    : _dio = Dio(
+        BaseOptions(
+          baseUrl: ApiConstants.developmentBaseUrl,
+          connectTimeout: ApiConstants.connectTimeout,
+          receiveTimeout: ApiConstants.receiveTimeout,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        ),
+      ) {
+    _dio.interceptors.add(AuthInterceptor(tokenProvider: tokenProvider));
     if (kDebugMode) {
       _dio.interceptors.add(
         PrettyDioLogger(
@@ -31,8 +28,7 @@ class DioClient {
     }
   }
 
-  late final Dio _dio;
-
-  // Expose the raw instance so repositories can seamlessly perform standard tasks
+  final Future<String?> Function() tokenProvider;
+  final Dio _dio;
   Dio get instance => _dio;
 }
