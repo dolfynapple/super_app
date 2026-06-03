@@ -13,6 +13,25 @@ A Very Good Project created by Very Good CLI.
 
 ---
 
+## Active Scope
+
+The repository is structured as a multi-project portfolio, but the current implementation scope is intentionally narrow:
+
+- Active now: cashier app
+- Deferred for now: AI assistant
+- Deferred for now: websocket system
+
+The app currently boots into a dashboard launcher. From there, users can open the cashier module, while the deferred modules remain visible as future app slots.
+
+Planned cashier slices:
+
+- product catalog
+- cart and checkout
+- transaction history
+- local-first storage and sync-ready repository contracts
+
+---
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:

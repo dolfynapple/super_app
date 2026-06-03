@@ -3,13 +3,15 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:portfolio_super_app/app/app.dart';
-import 'package:portfolio_super_app/features/counter/counter.dart';
+import 'package:portfolio_super_app/core/router/dashboard_shell.dart';
 
 void main() {
   group('App', () {
-    testWidgets('renders CounterPage', (tester) async {
+    testWidgets('renders DashboardHomePage', (tester) async {
       await tester.pumpWidget(App());
-      expect(find.byType(CounterPage), findsOneWidget);
+      await tester.pumpAndSettle();
+      expect(find.byType(DashboardHomePage), findsOneWidget);
+      expect(find.text('Cashier'), findsOneWidget);
     });
   });
 }
