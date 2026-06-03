@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio_super_app/core/router/dashboard_shell.dart';
+import 'package:portfolio_super_app/core/router/route_names.dart';
 import 'package:portfolio_super_app/features/counter/counter.dart'; // Using the default template page as a placeholder
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
@@ -24,7 +26,7 @@ final GoRouter appRouter = GoRouter(
       },
       routes: [
         GoRoute(
-          path: '/',
+          path: RouteNames.dashboard,
           builder: (context, state) => const Center(
             child: Text(
               '🎛️ Central Hub Dashboard\n(Welcome back, Fyn!)',
@@ -33,62 +35,22 @@ final GoRouter appRouter = GoRouter(
           ),
         ),
         GoRoute(
-          path: '/ai-assistant',
+          path: RouteNames.aiAssistant,
           builder: (context, state) =>
               const Center(child: Text('🤖 AI Assistant Mini-App')),
         ),
         GoRoute(
-          path: '/websocket-system',
+          path: RouteNames.websocketSystem,
           builder: (context, state) =>
               const CounterPage(), // Temporary placeholder using your Very Good template feature
+        ),
+        GoRoute(
+          path: RouteNames.cashierApps,
+          builder: (context, state) => const Center(
+            child: Text('💳 Cashier Apps Mini-App'),
+          ), // Temporary placeholder using your Very Good template feature
         ),
       ],
     ),
   ],
 );
-
-class DashboardShell extends StatelessWidget {
-  const DashboardShell({required this.child, super.key});
-  final Widget child;
-
-  int _getCurrentIndex(BuildContext context) {
-    final route = GoRouterState.of(context).matchedLocation;
-    if (route.startsWith('/ai-assistant')) return 1;
-    if (route.startsWith('/websocket-system')) return 2;
-    return 0;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: child),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _getCurrentIndex(context),
-        onTap: (index) {
-          switch (index) {
-            case 0:
-              context.go('/');
-            case 1:
-              context.go('/ai-assistant');
-            case 2:
-              context.go('/websocket-system');
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard_rounded),
-            label: 'Hub',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.psychology_rounded),
-            label: 'AI Agent',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sync_alt_rounded),
-            label: 'Streams',
-          ),
-        ],
-      ),
-    );
-  }
-}
