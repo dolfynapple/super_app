@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:portfolio_super_app/core/database/hive_service.dart';
-import 'package:portfolio_super_app/core/database/secure_storage.dart';
+import 'package:portfolio_super_app/core/storage/hive_service.dart';
+import 'package:portfolio_super_app/core/storage/secure_storage.dart';
 import 'package:portfolio_super_app/core/network/dio_client.dart';
 
 /// Global alias to cleanly pull dependencies anywhere in the app:
