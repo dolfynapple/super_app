@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio_super_app/core/router/dashboard_shell.dart';
-import 'package:portfolio_super_app/core/router/route_names.dart';
+import 'package:portfolio_super_app/core/router/route_paths.dart';
 import 'package:portfolio_super_app/features/counter/counter.dart'; // Using the default template page as a placeholder
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
@@ -26,7 +26,7 @@ final GoRouter appRouter = GoRouter(
       },
       routes: [
         GoRoute(
-          path: RouteNames.dashboard,
+          path: RoutePaths.dashboard,
           builder: (context, state) => const Center(
             child: Text(
               '🎛️ Central Hub Dashboard\n(Welcome back, Fyn!)',
@@ -35,17 +35,17 @@ final GoRouter appRouter = GoRouter(
           ),
         ),
         GoRoute(
-          path: RouteNames.aiAssistant,
+          path: RoutePaths.aiAssistant,
           builder: (context, state) =>
               const Center(child: Text('🤖 AI Assistant Mini-App')),
         ),
         GoRoute(
-          path: RouteNames.websocketSystem,
+          path: RoutePaths.websocketSystem,
           builder: (context, state) =>
               const CounterPage(), // Temporary placeholder using your Very Good template feature
         ),
         GoRoute(
-          path: RouteNames.cashierApps,
+          path: RoutePaths.cashierApps,
           builder: (context, state) => const Center(
             child: Text('💳 Cashier Apps Mini-App'),
           ), // Temporary placeholder using your Very Good template feature

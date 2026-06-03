@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio_super_app/core/router/route_names.dart';
+import 'package:portfolio_super_app/core/router/route_paths.dart';
 
 class DashboardShell extends StatelessWidget {
   const DashboardShell({required this.child, super.key});
@@ -8,9 +8,9 @@ class DashboardShell extends StatelessWidget {
 
   int _getCurrentIndex(BuildContext context) {
     final route = GoRouterState.of(context).matchedLocation;
-    if (route.startsWith(RouteNames.aiAssistant)) return 1;
-    if (route.startsWith(RouteNames.websocketSystem)) return 2;
-    if (route.startsWith(RouteNames.cashierApps)) return 3;
+    if (route.startsWith(RoutePaths.aiAssistant)) return 1;
+    if (route.startsWith(RoutePaths.websocketSystem)) return 2;
+    if (route.startsWith(RoutePaths.cashierApps)) return 3;
     return 0;
   }
 
@@ -23,13 +23,13 @@ class DashboardShell extends StatelessWidget {
         onTap: (index) {
           switch (index) {
             case 0:
-              context.go(RouteNames.dashboard);
+              context.go(RoutePaths.dashboard);
             case 1:
-              context.go(RouteNames.aiAssistant);
+              context.go(RoutePaths.aiAssistant);
             case 2:
-              context.go(RouteNames.websocketSystem);
+              context.go(RoutePaths.websocketSystem);
             case 3:
-              context.go(RouteNames.cashierApps);
+              context.go(RoutePaths.cashierApps);
           }
         },
         items: const [
