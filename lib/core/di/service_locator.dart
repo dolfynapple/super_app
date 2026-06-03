@@ -1,8 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:portfolio_super_app/core/network/dio_client.dart';
 import 'package:portfolio_super_app/core/storage/hive_service.dart';
 import 'package:portfolio_super_app/core/storage/secure_storage.dart';
-import 'package:portfolio_super_app/core/network/dio_client.dart';
 
 /// Global alias to cleanly pull dependencies anywhere in the app:
 /// e.g., `sl<DioClient>()`
@@ -17,6 +17,8 @@ Future<void> initServiceLocator() async {
   await hiveService.init();
 
   // == registering services in the locator ==
+
+  // core services
   sl
     ..registerSingleton<HiveService>(hiveService)
     ..registerLazySingleton(FlutterSecureStorage.new)
