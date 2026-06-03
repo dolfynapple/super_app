@@ -3,7 +3,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:portfolio_super_app/app/app.dart';
-import 'package:portfolio_super_app/counter/counter.dart';
+import 'package:portfolio_super_app/features/counter/counter.dart';
 
 void main() {
   group('App', () {

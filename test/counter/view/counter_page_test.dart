@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:portfolio_super_app/counter/counter.dart';
+import 'package:portfolio_super_app/features/counter/counter.dart';
+import 'package:portfolio_super_app/features/counter/view/counter_view.dart';
 
 import '../../helpers/helpers.dart';
 

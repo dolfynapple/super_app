@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:portfolio_super_app/counter/counter.dart';
+import 'package:portfolio_super_app/features/counter/cubit/counter_cubit.dart';
 import 'package:portfolio_super_app/l10n/l10n.dart';
-
-class CounterPage extends StatelessWidget {
-  const CounterPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CounterCubit(),
-      child: const CounterView(),
-    );
-  }
-}
 
 class CounterView extends StatelessWidget {
   const CounterView({super.key});

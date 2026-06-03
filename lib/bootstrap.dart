@@ -3,7 +3,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:portfolio_super_app/app/service_locator.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:portfolio_super_app/core/di/service_locator.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -26,9 +27,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
+  // load env
+  await dotenv.load();
+
   Bloc.observer = const AppBlocObserver();
 
-  // init DI
+  WidgetsFlutterBinding.ensureInitialized();
   await initServiceLocator();
 
   // Add cross-flavor configuration here
